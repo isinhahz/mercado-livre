@@ -91,15 +91,17 @@ main {
     padding: 20px;
 }
 
-.produtos {
-    display: grid;
+.container-produtos {
     /* Define o layout de grid */
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    display: grid;
+    margin: 50px;
     /* Cria colunas flexíveis */
-    gap: 20px;
+    grid-template-columns: repeat(5, 1fr);
     /* Espaçamento entre os cards */
-    justify-content: center;
+    gap: 5px;
+    flex-wrap: wrap;
     /* Centraliza os cards */
+    justify-content: center;
 }
 
 .card-produto {
@@ -127,5 +129,5 @@ main {
 .preco-produto {
     font-size: 1.2em;
     font-weight: bold;
-    color: #006fdf;
+    color: #042444;
 }
