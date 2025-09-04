@@ -98,7 +98,7 @@ main {
     /* Cria colunas flexíveis */
     grid-template-columns: repeat(5, 1fr);
     /* Espaçamento entre os cards */
-    gap: 5px;
+    gap: 10px;
     flex-wrap: wrap;
     /* Centraliza os cards */
     justify-content: center;
@@ -110,6 +110,7 @@ main {
     padding: 15px;
     text-align: center;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .imagem-produto {
@@ -118,6 +119,18 @@ main {
     max-height: 200px;
     object-fit: contain;
     margin-bottom: 10px;
+    transition: transform 0.3s ease;
+}
+
+/* Efeito ao passar o mouse no card */
+.card-produto:hover {
+    transform: scale(1.05); /* Aumenta o tamanho do card em 5% */
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2); /* Aumenta a sombra para destaque */
+}
+
+/* Efeito ao passar o mouse na imagem */
+.card-produto:hover .imagem-produto {
+    transform: scale(1.1); /* Zoom na imagem ao passar o mouse no card */
 }
 
 .card-produto h3 {
@@ -131,3 +144,35 @@ main {
     font-weight: bold;
     color: #042444;
 }
+
+.botao-comprar {
+    background-color: #069606; /* Cor amarela do Mercado Livre */
+    color: #ffff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s ease; /* Adiciona uma transição suave */
+}
+
+.botao-comprar:hover {
+    background-color: #006400 /* Um amarelo um pouco mais escuro ao passar o mouse */
+}
+
+.classificacao-estrela {
+    color: #ccc; /* Cor das estrelas "vazias" */
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.classificacao-estrela .estrela {
+    cursor: default; /* Remove o cursor de clique das estrelas */
+}
+
+.classificacao-estrela .estrela.preenchida {
+    color: #ffda00; /* Cor das estrelas "preenchidas" (amarelo) */
+}
+

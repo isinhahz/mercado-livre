@@ -1,10 +1,8 @@
 'use strict'
 
-// A função para criar o card agora recebe o objeto 'produto' individual
+//
 function criarCardProduto(produto) {
     const produtosContainer = document.getElementById('produtos');
-
-    // Cria o container do card
     const card = document.createElement('div');
     card.classList.add('card-produto');
 
@@ -18,16 +16,41 @@ function criarCardProduto(produto) {
     const nome = document.createElement('h3');
     nome.textContent = produto.nome;
 
+    //Container para classificação dos produtos
+    const classificacaoContainer = document.createElement('div');
+    classificacaoContainer.classList.add('classificacao-estrela');
+
+    // Loop para criar as estrelas de classificação
+    for (let i = 1; i <= 5; i++) {
+        const estrela = document.createElement('span');
+        estrela.classList.add('estrela');
+        // Se a nota do produto for maior ou igual ao número da estrela, ela é "preenchida"
+        if (i <= produto.classificacao) {
+            estrela.classList.add('preenchida');
+        }
+        estrela.textContent = '★'; // Caractere de estrela
+        classificacaoContainer.appendChild(estrela);
+    }
+
     // Cria o parágrafo para o preço
     const preco = document.createElement('p');
     // Formata o preço para o padrão de moeda brasileira (opcional, mas recomendado)
     preco.textContent = `R$ ${produto.preco.toFixed(2).replace('.', ',')}`;
     preco.classList.add('preco-produto');
 
+    const botaoComprar = document.createElement('button');
+    botaoComprar.textContent = 'Comprar';
+    botaoComprar.classList.add('botao-comprar');
+    botaoComprar.addEventListener('click', () => {
+        alert(`Produto "${produto.nome}" adicionado ao carrinho!`);
+    });
+
     // Adiciona todos os elementos ao card
     card.appendChild(img);
     card.appendChild(nome);
-    card.appendChild(preco); 
+    card.appendChild(preco);
+    card.appendChild(botaoComprar);
+    card.appendChild(classificacaoContainer);
 
     // Adiciona o card completo ao container principal
     produtosContainer.appendChild(card);
